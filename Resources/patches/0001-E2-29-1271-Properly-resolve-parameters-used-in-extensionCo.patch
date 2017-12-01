@@ -1,0 +1,36 @@
+From 4ec0b419c2b2cfb62b5bf6d3aa58ca2739d221f9 Mon Sep 17 00:00:00 2001
+From: BR <developers.team+br@gotoemma.de>
+Date: Fri, 1 Dec 2017 14:42:45 +0100
+Subject: [PATCH] #1271 Properly resolve parameters used in extensionConfig
+
+---
+ src/DependencyInjection/Compiler/AddProviderCompilerPass.php | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/DependencyInjection/Compiler/AddProviderCompilerPass.php b/src/DependencyInjection/Compiler/AddProviderCompilerPass.php
+index bf6015e..68546ec 100644
+--- a/src/DependencyInjection/Compiler/AddProviderCompilerPass.php
++++ b/src/DependencyInjection/Compiler/AddProviderCompilerPass.php
+@@ -85,14 +85,14 @@ class AddProviderCompilerPass implements CompilerPassInterface
+                     $definition = $container->getDefinition($id);
+ 
+                     $definition
+-                        ->replaceArgument(1, new Reference($config['filesystem']))
+-                        ->replaceArgument(2, new Reference($config['cdn']))
+-                        ->replaceArgument(3, new Reference($config['generator']))
+-                        ->replaceArgument(4, new Reference($config['thumbnail']))
++                        ->replaceArgument(1, new Reference($container->getParameterBag()->resolveValue($config['filesystem'])))
++                        ->replaceArgument(2, new Reference($container->getParameterBag()->resolveValue($config['cdn'])))
++                        ->replaceArgument(3, new Reference($container->getParameterBag()->resolveValue($config['generator'])))
++                        ->replaceArgument(4, new Reference($container->getParameterBag()->resolveValue($config['thumbnail'])))
+                     ;
+ 
+                     if ($config['resizer']) {
+-                        $definition->addMethodCall('setResizer', [new Reference($config['resizer'])]);
++                        $definition->addMethodCall('setResizer', [new Reference($container->getParameterBag()->resolveValue($config['resizer']))]);
+                     }
+                 }
+             }
+-- 
+2.13.6 (Apple Git-96)
+

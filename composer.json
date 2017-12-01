@@ -16,7 +16,7 @@
     "extra": {
         "patches": {
             "sonata-project/media-bundle": {
-                "Workaround for UUID to perform math operation": "https://bitbucket.org/gotoemma/media-api/raw/master/Resources/patches/0001-E2-29-Workaround-for-UUID-to-perform-math-operation.patch"
+                "Workaround for UUID to perform math operation": "git@bitbucket.org:gotoemma/media-api/raw/master/Resources/patches/0001-E2-29-Workaround-for-UUID-to-perform-math-operation.patch"
             }
         }
     }

@@ -1,0 +1,31 @@
+From 6cf4350b0e29f1fa4d583a39a2079b5c10414f17 Mon Sep 17 00:00:00 2001
+From: BR <developers.team+br@gotoemma.de>
+Date: Fri, 1 Dec 2017 13:25:26 +0100
+Subject: [PATCH] #E2-29 Workaround for UUID to perform math operation
+
+---
+ src/Generator/DefaultGenerator.php | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/Generator/DefaultGenerator.php b/src/Generator/DefaultGenerator.php
+index 8ae4af8..41bdece 100644
+--- a/src/Generator/DefaultGenerator.php
++++ b/src/Generator/DefaultGenerator.php
+@@ -40,8 +40,12 @@ class DefaultGenerator implements GeneratorInterface
+      */
+     public function generatePath(MediaInterface $media)
+     {
+-        $rep_first_level = (int) ($media->getId() / $this->firstLevel);
+-        $rep_second_level = (int) (($media->getId() - ($rep_first_level * $this->firstLevel)) / $this->secondLevel);
++        $mediaId = $media->getId();
++        if (preg_match("/^\{?[a-f\d]{8}-(?:[a-f\d]{4}-){3}[a-f\d]{12}\}?$/i", $mediaId)) {
++            $mediaId = (int) hexdec(implode("", array_slice(explode("-", $mediaId), 0, 2)));
++        }
++        $rep_first_level = (int) ($mediaId / $this->firstLevel);
++        $rep_second_level = (int) (($mediaId - ($rep_first_level * $this->firstLevel)) / $this->secondLevel);
+ 
+         return sprintf('%s/%04s/%02s', $media->getContext(), $rep_first_level + 1, $rep_second_level + 1);
+     }
+-- 
+2.13.6 (Apple Git-96)
+

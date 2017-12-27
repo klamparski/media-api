@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class SproutVideoProvider extends BaseVideoProvider
 {
+    const ALIAS = 'sonata.media.provider.sproutvideo';
+
     public static $STATE_TO_PROVIDERSTATUS = array(
         'inspecting' => MediaInterface::STATUS_PENDING,
         'processing' => MediaInterface::STATUS_ENCODING,

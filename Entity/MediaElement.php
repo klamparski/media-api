@@ -3,6 +3,8 @@
 namespace Gotoemma\MediaApiBundle\Entity;
 
 use Doctrine\ORM\Mapping AS ORM;
+use Gotoemma\MediaApiBundle\Provider\PdfProvider;
+use Gotoemma\MediaApiBundle\Provider\SproutVideoProvider;
 use Sonata\MediaBundle\Entity\BaseMedia;
 
 /**
@@ -11,8 +13,8 @@ use Sonata\MediaBundle\Entity\BaseMedia;
 class MediaElement extends BaseMedia
 {
 	const PROVIDER_IMAGE = "sonata.media.provider.image";
-	const PROVIDER_PDF_FILE = "sonata.media.provider.pdf";
-	const PROVIDER_SPROUTVIDEO = "sonata.media.provider.sproutvideo";
+	const PROVIDER_PDF_FILE = PdfProvider::ALIAS;
+	const PROVIDER_SPROUTVIDEO = SproutVideoProvider::ALIAS;
 
 	public static $MIMETYPE_TO_PROVIDER = array(
 		'image/png' => self::PROVIDER_IMAGE,

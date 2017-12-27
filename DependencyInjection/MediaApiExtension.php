@@ -4,7 +4,8 @@ namespace Gotoemma\MediaApiBundle\DependencyInjection;
 
 use Gotoemma\MediaApiBundle\Action\SproutVideoEventAction;
 use Gotoemma\MediaApiBundle\Action\UploadAction;
-use Ins\MediaApiBundle\Provider\SproutVideoProvider;
+use Gotoemma\MediaApiBundle\Provider\PdfProvider;
+use Gotoemma\MediaApiBundle\Provider\SproutVideoProvider;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -32,7 +33,7 @@ class MediaApiExtension extends Extension
             ->register(SproutVideoEventAction::class, SproutVideoEventAction::class)
             ->setAutowired(true);
 
-        $definition = $container->getDefinition(SproutVideoProvider::class);
+        $definition = $container->getDefinition(SproutVideoProvider::ALIAS);
         $definition->addMethodCall('setConfiguration', array($processedConfiguration));
 
         $container->setParameter('media_api.upload_max_filesize',$processedConfiguration['upload_max_filesize']);
@@ -46,7 +47,7 @@ class MediaApiExtension extends Extension
      */
     public function configurePdfProvider(ContainerBuilder $container, $config)
     {
-        $definition = $container->getDefinition('sonata.media.provider.pdf');
+        $definition = $container->getDefinition(PdfProvider::ALIAS);
         $config = $config['providers']['pdf'];
 
         $definition

@@ -3,6 +3,8 @@ parameters:
     gotoemma_imagine.controller.class: Gotoemma\MediaApiBundle\Controller\ImagineController
 
 services:
+    Sonata\CoreBundle\Model\ManagerInterface: '@sonata.media.manager.media'
+
     Gotoemma\MediaApiBundle\EventListener\PostLoadEventListener:
         class: Gotoemma\MediaApiBundle\EventListener\PostLoadEventListener
         arguments:
@@ -12,7 +14,6 @@ services:
             - { name: 'doctrine.event_listener', event: 'postLoad'}
 
     sonata.media.provider.sproutvideo:
-        alias: Gotoemma\MediaApiBundle\Provider\SproutVideoProvider
         class: Gotoemma\MediaApiBundle\Provider\SproutVideoProvider
         tags:
             - { name: 'sonata.media.provider' }

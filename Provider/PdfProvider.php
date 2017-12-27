@@ -14,6 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class PdfProvider extends FileProvider
 {
+    const ALIAS = "sonata.media.provider.pdf";
+
     protected $imagineAdapter;
     protected $container;
 

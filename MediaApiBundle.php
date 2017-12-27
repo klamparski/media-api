@@ -1,6 +1,6 @@
 <?php
 
-namespace Ins\MediaApiBundle;
+namespace Gotoemma\MediaApiBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

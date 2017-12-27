@@ -1,6 +1,6 @@
 <?php
 
-namespace Ins\MediaApiBundle\Controller;
+namespace Gotoemma\MediaApiBundle\Controller;
 
 use Imagine\Exception\RuntimeException;
 use Liip\ImagineBundle\Exception\Imagine\Filter\NonExistingFilterException;

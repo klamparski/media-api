@@ -1,6 +1,6 @@
 <?php
 
-namespace Ins\MediaApiBundle\Validator\Constraints;
+namespace Gotoemma\MediaApiBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraints\File as ParentFile;
 

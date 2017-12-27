@@ -1,10 +1,10 @@
 <?php
 
-namespace Ins\MediaApiBundle\Dto;
+namespace Gotoemma\MediaApiBundle\Dto;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
-use Ins\MediaApiBundle\Validator\Constraints as MediaApiAssert;
+use Gotoemma\MediaApiBundle\Validator\Constraints as MediaApiAssert;
 
 class MediaElement
 {
@@ -107,9 +107,6 @@ class MediaElement
         $this->fileName = $file->getClientOriginalName();
     }
 
-    /**
-     * @return array
-     */
     private function extractAttributes() {
         $this->attributes = array(
             'base64Content' => '',

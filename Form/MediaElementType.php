@@ -1,6 +1,6 @@
 <?php
 
-namespace Ins\MediaApiBundle\Form;
+namespace Gotoemma\MediaApiBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -11,9 +11,7 @@ class MediaElementType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('file', FileType::class)
-        ;
+        $builder->add('file', FileType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

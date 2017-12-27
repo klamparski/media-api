@@ -10,7 +10,7 @@ Example for integration of Sonata MediaBundle with ApiPlatform 2.0 including med
 ## Setup
 
 - Clone this repository to your src/ folder of your symfony instance
-- Create a MediaElement entity without your AppBundle and extend from Ins\MediaApiBundle\Entity\MediaElement
+- Create a MediaElement entity without your AppBundle and extend from Gotoemma\MediaApiBundle\Entity\MediaElement
 - Configure serialization groups according to your needs
 - Configure Sonata MediaBundle to use your MediaElement class
 - Add routing configuration for UploadAction
@@ -58,7 +58,7 @@ In this example we define $formats property which is already declared in extende
 namespace YourBundle\Entity;
 
 use Doctrine\ORM\Mapping AS ORM;
-use Ins\MediaApiBundle\Entity\MediaElement as BaseMediaElement;
+use Gotoemma\MediaApiBundle\Entity\MediaElement as BaseMediaElement;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiResource;

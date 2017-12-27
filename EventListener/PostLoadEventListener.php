@@ -1,6 +1,6 @@
 <?php
 
-namespace Ins\MediaApiBundle\EventListener;
+namespace Gotoemma\MediaApiBundle\EventListener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Sonata\MediaBundle\Provider\MediaProviderInterface;

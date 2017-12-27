@@ -1,8 +1,8 @@
 <?php
 
-namespace Ins\MediaApiBundle\Action;
+namespace Gotoemma\MediaApiBundle\Action;
 
-use Ins\MediaApiBundle\Entity\MediaElement;
+use Gotoemma\MediaApiBundle\Entity\MediaElement;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sonata\CoreBundle\Model\ManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Ins\MediaApiBundle\Dto as Dto;
+use Gotoemma\MediaApiBundle\Dto as Dto;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -64,7 +64,7 @@ class UploadAction
             $mediaElementDto = $this->serializer->deserialize($request->getContent(), Dto\MediaElement::class, $request->getContentType());
 		} else {
             $mediaElementDto = new Dto\MediaElement();
-            $form = $this->container->get('form.factory')->createNamed('','Ins\MediaApiBundle\Form\MediaElementType', $mediaElementDto);
+            $form = $this->container->get('form.factory')->createNamed('','Gotoemma\MediaApiBundle\Form\MediaElementType', $mediaElementDto);
             $form->handleRequest($request);
             if (!$form->isValid()) {
                 $errors = [];

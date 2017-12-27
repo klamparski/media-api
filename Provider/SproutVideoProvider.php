@@ -1,6 +1,6 @@
 <?php
 
-namespace Ins\MediaApiBundle\Provider;
+namespace Gotoemma\MediaApiBundle\Provider;
 
 use Sonata\CoreBundle\Model\Metadata;
 use Sonata\MediaBundle\Model\MediaInterface;

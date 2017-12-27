@@ -1,9 +1,9 @@
 <?php
 
-namespace Ins\MediaApiBundle\DependencyInjection;
+namespace Gotoemma\MediaApiBundle\DependencyInjection;
 
-use Ins\MediaApiBundle\Action\SproutVideoEventAction;
-use Ins\MediaApiBundle\Action\UploadAction;
+use Gotoemma\MediaApiBundle\Action\SproutVideoEventAction;
+use Gotoemma\MediaApiBundle\Action\UploadAction;
 use Ins\MediaApiBundle\Provider\SproutVideoProvider;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

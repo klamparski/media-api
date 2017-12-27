@@ -1,6 +1,6 @@
 <?php
 
-namespace Ins\MediaApiBundle\Provider;
+namespace Gotoemma\MediaApiBundle\Provider;
 
 use Gaufrette\Filesystem;
 use Imagine\Image\ImagineInterface;

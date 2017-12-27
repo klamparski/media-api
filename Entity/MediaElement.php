@@ -1,6 +1,6 @@
 <?php
 
-namespace Ins\MediaApiBundle\Entity;
+namespace Gotoemma\MediaApiBundle\Entity;
 
 use Doctrine\ORM\Mapping AS ORM;
 use Sonata\MediaBundle\Entity\BaseMedia;

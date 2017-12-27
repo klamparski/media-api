@@ -1,6 +1,6 @@
 <?php
 
-namespace Ins\MediaApiBundle\Thumbnail;
+namespace Gotoemma\MediaApiBundle\Thumbnail;
 
 use Sonata\MediaBundle\Model\MediaInterface;
 use Sonata\MediaBundle\Provider\MediaProviderInterface;

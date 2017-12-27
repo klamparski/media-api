@@ -1,5 +1,5 @@
 <?php
-namespace Ins\MediaApiBundle\DependencyInjection;
+namespace Gotoemma\MediaApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

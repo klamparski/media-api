@@ -1,10 +1,10 @@
 parameters:
-    sonata.media.thumbnail.liip_imagine: Ins\MediaApiBundle\Thumbnail\LiipImagineThumbnail
-    ins_imagine.controller.class: Ins\MediaApiBundle\Controller\ImagineController
+    sonata.media.thumbnail.liip_imagine: Gotoemma\MediaApiBundle\Thumbnail\LiipImagineThumbnail
+    gotoemma_imagine.controller.class: Gotoemma\MediaApiBundle\Controller\ImagineController
 
 services:
-    Ins\MediaApiBundle\EventListener\PostLoadEventListener:
-        class: Ins\MediaApiBundle\EventListener\PostLoadEventListener
+    Gotoemma\MediaApiBundle\EventListener\PostLoadEventListener:
+        class: Gotoemma\MediaApiBundle\EventListener\PostLoadEventListener
         arguments:
             - '@service_container'
             - '@request_stack'
@@ -12,8 +12,8 @@ services:
             - { name: 'doctrine.event_listener', event: 'postLoad'}
 
     sonata.media.provider.sproutvideo:
-        alias: Ins\MediaApiBundle\Provider\SproutVideoProvider
-        class: Ins\MediaApiBundle\Provider\SproutVideoProvider
+        alias: Gotoemma\MediaApiBundle\Provider\SproutVideoProvider
+        class: Gotoemma\MediaApiBundle\Provider\SproutVideoProvider
         tags:
             - { name: 'sonata.media.provider' }
         arguments:
@@ -28,7 +28,7 @@ services:
             -  [ setTemplates, [ { helper_thumbnail: MediaApiBundle:Provider:thumbnail.html.twig, helper_view: MediaApiBundle:Provider:view_sproutvideo.html.twig } ] ]
 
     sonata.media.provider.pdf:
-        class: Ins\MediaApiBundle\Provider\PdfProvider
+        class: Gotoemma\MediaApiBundle\Provider\PdfProvider
         tags:
             - { name: 'sonata.media.provider' }
         arguments: ['','','','','','','','','@sonata.media.metadata.proxy','@service_container']
@@ -36,14 +36,14 @@ services:
             -  [ setTemplates, [ { helper_thumbnail: MediaApiBundle:Provider:thumbnail.html.twig, helper_view: MediaApiBundle:Provider:view_pdf.html.twig } ] ]
 
     media_api.file.validator:
-        class: Ins\MediaApiBundle\Validator\Constraints\FileValidator
+        class: Gotoemma\MediaApiBundle\Validator\Constraints\FileValidator
         arguments:
             - '@service_container'
         tags:
             - { name: validator.constraint_validator, alias: media_api.file.validator }
 
-    ins_imagine.controller:
-        class: '%ins_imagine.controller.class%'
+    gotoemma_imagine.controller:
+        class: '%gotoemma_imagine.controller.class%'
         arguments:
             - '@liip_imagine.data.manager'
             - '@liip_imagine.filter.manager'

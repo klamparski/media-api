@@ -1,8 +1,8 @@
 <?php
 
-namespace Ins\MediaApiBundle\Action;
+namespace Gotoemma\MediaApiBundle\Action;
 
-use Ins\MediaApiBundle\Provider\SproutVideoProvider;
+use Gotoemma\MediaApiBundle\Provider\SproutVideoProvider;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sonata\CoreBundle\Model\ManagerInterface;
 use Sonata\MediaBundle\Tests\Entity\Media;

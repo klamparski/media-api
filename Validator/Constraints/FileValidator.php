@@ -1,8 +1,8 @@
 <?php
 
-namespace Ins\MediaApiBundle\Validator\Constraints;
+namespace Gotoemma\MediaApiBundle\Validator\Constraints;
 
-use Ins\MediaApiBundle\Entity\MediaElement;
+use Gotoemma\MediaApiBundle\Entity\MediaElement;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\FileValidator as ParentFileValidator;

@@ -4,27 +4,28 @@ namespace Ins\MediaApiBundle\Action;
 
 use Ins\MediaApiBundle\Provider\SproutVideoProvider;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sonata\MediaBundle\Entity\MediaManager;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Sonata\CoreBundle\Model\ManagerInterface;
+use Sonata\MediaBundle\Tests\Entity\Media;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class SproutVideoEventAction
 {
 	/**
-	 * @var Serializer
+	 * @var SerializerInterface
 	 */
 	private $serializer;
 
     /**
-     * @var MediaManager
+     * @var ManagerInterface
      */
     private $mediaManager;
 
 	/**
-	 * @var EventDispatcher
+	 * @var EventDispatcherInterface
 	 */
 	private $eventDispatcher;
 
@@ -33,7 +34,7 @@ class SproutVideoEventAction
      */
     private $provider;
 
-	public function __construct(Serializer $serializer, MediaManager $mediaManager, EventDispatcher $eventDispatcher, SproutVideoProvider $provider) {
+	public function __construct(SerializerInterface $serializer, ManagerInterface $mediaManager, EventDispatcherInterface $eventDispatcher, SproutVideoProvider $provider) {
 		$this->serializer = $serializer;
 		$this->mediaManager = $mediaManager;
 		$this->eventDispatcher = $eventDispatcher;
@@ -58,6 +59,8 @@ class SproutVideoEventAction
 		}
 
         $video = json_decode($request->getContent(), true);
+
+		/** @var Media $mediaElement */
         $mediaElement = $this->mediaManager->findOneBy(array('providerReference' => $video['id']));
 
         $this->provider->updateMetadata($mediaElement);

@@ -2,32 +2,30 @@
 
 namespace Ins\MediaApiBundle\Action;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Ins\MediaApiBundle\Entity\MediaElement;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sonata\MediaBundle\Entity\MediaManager;
+use Sonata\CoreBundle\Model\ManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Ins\MediaApiBundle\Dto as Dto;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\VarDumper\VarDumper;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class UploadAction
 {
 	/**
-	 * @var Serializer
+	 * @var SerializerInterface
 	 */
 	private $serializer;
 
 	/**
-	 * @var MediaManager
+	 * @var ManagerInterface
 	 */
 	private $mediaManager;
 
@@ -37,11 +35,11 @@ class UploadAction
 	private $container;
 
 	/**
-	 * @var Router
+	 * @var RouterInterface
 	 */
 	private $router;
 
-	public function __construct(Serializer $serializer, MediaManager $mediaManager, Router $router, ContainerInterface $container) {
+	public function __construct(SerializerInterface $serializer, ManagerInterface $mediaManager, RouterInterface $router, ContainerInterface $container) {
 		$this->serializer = $serializer;
 		$this->mediaManager = $mediaManager;
 		$this->router = $router;
@@ -146,7 +144,7 @@ class UploadAction
         foreach ($form->getErrors() as $error) {
             $errors[] = [
                 'propertyPath' => $form->getName(),
-                'message' => $error->getMessage()
+                'message' => $error->getMessage(),
             ];
         }
 
@@ -156,10 +154,11 @@ class UploadAction
                 if ($child->count()) {
                     foreach ($child as $subchild) {
                         if (!$subchild->isValid()) {
+                            /** @var \Exception $error */
                             foreach ($subchild->getErrors(true) as $error) {
                                 $errors[] = [
                                     'propertyPath' => $child->getName().ucfirst($subchild->getName()),
-                                    'message' => $error->getMessage()
+                                    'message' => $error->getMessage(),
                                 ];
                             }
                         }
@@ -168,7 +167,7 @@ class UploadAction
                     foreach ($child->getErrors(true) as $error) {
                         $errors[] = [
                             'propertyPath' => $child->getName(),
-                            'message' => $error->getMessage()
+                            'message' => $error->getMessage(),
                         ];
                     }
                 }

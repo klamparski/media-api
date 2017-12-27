@@ -2,6 +2,9 @@
 
 namespace Ins\MediaApiBundle\DependencyInjection;
 
+use Ins\MediaApiBundle\Action\SproutVideoEventAction;
+use Ins\MediaApiBundle\Action\UploadAction;
+use Ins\MediaApiBundle\Provider\SproutVideoProvider;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -22,14 +25,14 @@ class MediaApiExtension extends Extension
 		$loader->load('services.yml');
 
 		$container
-			->register('Ins\MediaApiBundle\Action\UploadAction', 'Ins\MediaApiBundle\Action\UploadAction')
+			->register(UploadAction::class, UploadAction::class)
 			->setAutowired(true);
 
         $container
-            ->register('Ins\MediaApiBundle\Action\SproutVideoEventAction', 'Ins\MediaApiBundle\Action\SproutVideoEventAction')
+            ->register(SproutVideoEventAction::class, SproutVideoEventAction::class)
             ->setAutowired(true);
 
-        $definition = $container->getDefinition('sonata.media.provider.sproutvideo');
+        $definition = $container->getDefinition(SproutVideoProvider::class);
         $definition->addMethodCall('setConfiguration', array($processedConfiguration));
 
         $container->setParameter('media_api.upload_max_filesize',$processedConfiguration['upload_max_filesize']);

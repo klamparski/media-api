@@ -3,7 +3,7 @@ parameters:
     ins_imagine.controller.class: Ins\MediaApiBundle\Controller\ImagineController
 
 services:
-    listener.media_event_post_listener:
+    Ins\MediaApiBundle\EventListener\PostLoadEventListener:
         class: Ins\MediaApiBundle\EventListener\PostLoadEventListener
         arguments:
             - '@service_container'
@@ -12,6 +12,7 @@ services:
             - { name: 'doctrine.event_listener', event: 'postLoad'}
 
     sonata.media.provider.sproutvideo:
+        alias: Ins\MediaApiBundle\Provider\SproutVideoProvider
         class: Ins\MediaApiBundle\Provider\SproutVideoProvider
         tags:
             - { name: 'sonata.media.provider' }

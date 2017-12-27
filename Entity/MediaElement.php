@@ -4,7 +4,6 @@ namespace Ins\MediaApiBundle\Entity;
 
 use Doctrine\ORM\Mapping AS ORM;
 use Sonata\MediaBundle\Entity\BaseMedia;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\MappedSuperclass

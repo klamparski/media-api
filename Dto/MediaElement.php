@@ -107,9 +107,6 @@ class MediaElement
         $this->fileName = $file->getClientOriginalName();
     }
 
-    /**
-     * @return array
-     */
     private function extractAttributes() {
         $this->attributes = array(
             'base64Content' => '',
